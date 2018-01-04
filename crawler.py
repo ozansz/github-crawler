@@ -9,7 +9,7 @@ class JobIsDoneExc(Exception):
     pass
 
 class GitHubUserCrawler(threading.Thread):
-    base_url = "https://github.com/search?o=desc&q=location%3A{0}" +
+    base_url = "https://github.com/search?o=desc&q=location%3A{0}" + \
                "&s=followers&type=Users&p={1}"
 
     # location_data as dict or str, default output on screen
@@ -88,8 +88,8 @@ class GitHubUserCrawler(threading.Thread):
                     loc, page))
 
                 if tree == None:
-                    print('[Th#{}][!] Request limits fucked'.format(self.id) +
-                          'us in page #{}!'.format(page)
+                    print('[Th#{}][!] Request limits '.format(self.id) + \
+                          'fucked us in page #{}!'.format(page))
                     return self.crawlog
 
                 self.crawlog[loc] = page
@@ -264,11 +264,14 @@ def crawl_users():
 
     cr1 = GitHubUserCrawler("IST", cities["ist"],
                             out='developers_istanbul.txt',
-                            proxy_file='proxies.txt', 'uagents.txt')
+                            proxy_file='proxies.txt',
+                            uagents_file='uagents.txt')
     cr2 = GitHubUserCrawler("ANK", cities["ank"], out='developers_ankara.txt',
-                            proxy_file='proxies.txt', 'uagents.txt')
+                            proxy_file='proxies.txt',
+                            uagents_file='uagents.txt')
     cr3 = GitHubUserCrawler("IZM", cities["izm"], out='developers_izmir.txt',
-                            proxy_file='proxies.txt', 'uagents.txt')
+                            proxy_file='proxies.txt',
+                            uagents_file='uagents.txt')
 
     cr1.start()
     cr2.start()
