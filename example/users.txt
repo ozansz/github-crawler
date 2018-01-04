@@ -1,0 +1,3 @@
+ist::Istanbul::1::100
+ank::Ankara::1::100
+izm::Izmir::1::100
